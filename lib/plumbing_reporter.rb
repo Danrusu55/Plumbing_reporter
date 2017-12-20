@@ -1,10 +1,11 @@
-require 'rest_client'
+require 'rest-client'
 require 'json'
 require 'sendgrid-ruby'
 include SendGrid
 require 'date'
 require 'pry'
 require 'csv'
+require 'Base64'
 
 class Callrailreports
   require_relative 'constants'
