@@ -3,7 +3,6 @@ require 'json'
 require 'sendgrid-ruby'
 include SendGrid
 require 'date'
-require 'pry'
 require 'csv'
 require 'Base64'
 
