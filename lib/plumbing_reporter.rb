@@ -9,7 +9,7 @@ require 'base64'
 class Callrailreports
   require_relative 'constants'
 
-  def initialize(name, email)
+  def initialize(name)
     @name = name
     @email = EMAILS[@name]
     @company_id = COMPANIES[@name]
@@ -91,13 +91,13 @@ class Callrailreports
     mail.add_attachment(attachment)
 
     # also try: mail.add_attachment('/tmp/report.pdf', 'july_report.pdf')
-    puts "Sending email 1"
+    puts "Sending email 1 to #{@email}"
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API'])
     response = sg.client.mail._('send').post(request_body: mail.to_json)
     puts response.status_code
 
     puts ""
-    puts "Sending email 2"
+    puts "Sending email 2 to #{FROM_EMAIL}"
     mail = Mail.new(from, subject, from, content)
     mail.add_attachment(attachment)
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API'])
@@ -109,5 +109,4 @@ class Callrailreports
 end
 
 name = ARGV[0]
-email = ARGV[1]
-Callrailreports.new(name, email).run
+Callrailreports.new(name).run
