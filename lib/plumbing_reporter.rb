@@ -4,7 +4,7 @@ require 'sendgrid-ruby'
 include SendGrid
 require 'date'
 require 'csv'
-require 'Base64'
+require 'base64'
 
 class Callrailreports
   require_relative 'constants'
